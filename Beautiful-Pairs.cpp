@@ -16,7 +16,9 @@ vector<string> split(const string &);
  */
 
 int beautifulPairs(vector<int> A, vector<int> B) {
-
+    int result = 0;
+    
+    return result;
 }
 
 int main()
