@@ -15,10 +15,27 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY B
  */
 
-int beautifulPairs(vector<int> A, vector<int> B) {
-    int result = 0;
+int beautifulPairs(vector<int> A, vector<int> B)
+{
+    int count = 0;
+    for (int i = 0; i < A.size(); ++i)
+    {
+        for (int j = 0; j < B.size(); ++j)
+        {
+            if (A[i] == B[j])
+            {
+                A[i] =- 1;
+                B[j] =- 1;
+                count++;
+                break;
+            }
+        }
+    }
     
-    return result;
+    if (count == A.size())
+        return count - 1;
+    else        
+        return count + 1;
 }
 
 int main()
@@ -103,4 +120,3 @@ vector<string> split(const string &str) {
 
     return tokens;
 }
-
