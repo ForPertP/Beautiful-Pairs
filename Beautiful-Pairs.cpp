@@ -18,6 +18,7 @@ vector<string> split(const string &);
 int beautifulPairs(vector<int> A, vector<int> B)
 {
     int count = 0;
+    
     for (int i = 0; i < A.size(); ++i)
     {
         for (int j = 0; j < B.size(); ++j)
