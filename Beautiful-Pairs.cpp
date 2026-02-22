@@ -17,27 +17,28 @@ vector<string> split(const string &);
 
 int beautifulPairs(vector<int> A, vector<int> B)
 {
-    int count = 0;
+    unordered_map<int, int> freq;
     
-    for (int i = 0; i < A.size(); ++i)
+    for (int num : A)
+        freq[num]++;
+    
+    int match = 0;
+    
+    for (int num : B)
     {
-        for (int j = 0; j < B.size(); ++j)
+        if (freq[num] > 0)
         {
-            if (A[i] == B[j])
-            {
-                A[i] =- 1;
-                B[j] =- 1;
-                count++;
-                break;
-            }
+            match++;
+            freq[num]--;
         }
     }
     
-    if (count == A.size())
-        return count - 1;
-    else        
-        return count + 1;
+    if (match == A.size())
+        return match - 1;
+    else
+        return match + 1;
 }
+
 
 int main()
 {
