@@ -12,3 +12,15 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
+class Result
+{
+
+    /*
+     * Complete the 'beautifulPairs' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY A
+     *  2. INTEGER_ARRAY B
+     */
+}
