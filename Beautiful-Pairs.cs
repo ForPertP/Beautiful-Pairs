@@ -23,4 +23,19 @@ class Result
      *  1. INTEGER_ARRAY A
      *  2. INTEGER_ARRAY B
      */
+
+    int beautifulPairs(List<int> A, List<int> B)
+    {
+        Dictinary<int, int> freq = new Dictionary<int, int>();
+        
+        foreach (int num in A)
+        {
+            if (freq.ContainsKey(num))
+                freq[num]++;
+            else
+                freql[num] = 1;
+        }
+
+    }
+    
 }
