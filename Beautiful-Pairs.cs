@@ -24,18 +24,54 @@ class Result
      *  2. INTEGER_ARRAY B
      */
 
-    int beautifulPairs(List<int> A, List<int> B)
+    public static int beautifulPairs(List<int> A, List<int> B)
     {
-        Dictinary<int, int> freq = new Dictionary<int, int>();
+        Dictionary<int, int> freq = new Dictionary<int, int>();
         
         foreach (int num in A)
         {
-            if (freq.ContainsKey(num))
-                freq[num]++;
+            if (freq.TryGetValue(num, out int count))
+                freq[num] = count + 1;
             else
-                freql[num] = 1;
+                freq[num] = 1;
+        }        
+        
+        int match = 0;
+        
+        foreach (int num in B)
+        {
+            if (freq.TryGetValue(num, out int count) && count > 0)
+            {
+                match++;
+                freq[num] = count - 1;
+            }
         }
-
+        
+        if (match == A.Count)
+            return match - 1;
+        else
+            return match + 1;
     }
-    
+}
+
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> A = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(ATemp => Convert.ToInt32(ATemp)).ToList();
+
+        List<int> B = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(BTemp => Convert.ToInt32(BTemp)).ToList();
+
+        int result = Result.beautifulPairs(A, B);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
 }
